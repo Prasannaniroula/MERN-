@@ -1,6 +1,4 @@
-import bcrypt from "bcryptjs";
 import { User } from "../models/user.models.js"
-import bcryptjs from "bcryptjs";
 
 const home = async (req,res)=>{
     try {
@@ -27,7 +25,12 @@ const register = async (req,res)=>{
 
         res
         .status(200)
-        .json({ message: user });
+        .json({
+             message: user, 
+             token: await user.generateToken(),
+             userId: user._id.toString(),
+            
+            });
 } 
 catch (error) {
     console.log("Couldnot update data in the database")

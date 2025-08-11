@@ -1,4 +1,5 @@
 import { User } from "../models/user.models.js"
+import bcrypt from "bcryptjs"
 
 const home = async (req,res)=>{
     try {
@@ -40,4 +41,64 @@ catch (error) {
 }
 
 
-export default {home,register};
+const login = async(req,res)=>{
+  try {
+      //take data like username or email from req.body
+      //check username or email data existed in db or not
+      //check password
+      //token
+      //cookies
+  
+  
+      const {email,password} = req.body;
+      if(!email){
+         return res
+         .status(400)
+         .json({
+          success:false,
+          message: "Email is required"
+         })
+      }
+      const userExists = await User.findOne({email});
+      if(!userExists){
+          return res
+          .status(404)
+          .json({
+              success:false,
+              message: "The email you have provided is not registered in the DB"
+          })
+      }
+      const isPasswordValid = await userExists.isPasswordCorrect(password);
+  
+      if(!isPasswordValid){
+        return res 
+        .status(404)
+        .json({
+          success:false,
+          message: "The password you have entered is not correct"
+        })
+      }
+      //    const hashPassword= userExists.sharePasswords();
+      //    console.log(hashPassword)
+      //    const passwordHash = await bcrypt.hash(password,10);
+      //    console.log(passwordHash);
+      //    if(hashPassword===passwordHash){
+      //     console.log("equal password");
+      //    }
+      //    else{
+      //     console.log("password doesnot match")
+      //    }
+  
+  } catch (error) {
+    res
+    .status(500)
+    .json({
+        status:500,
+        message:"Error occured"
+    })
+    
+  }
+
+}
+
+export default {home,register,login};

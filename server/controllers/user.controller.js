@@ -69,6 +69,7 @@ const login = async(req,res)=>{
           })
       }
       const isPasswordValid = await userExists.isPasswordCorrect(password);
+      console.log(isPasswordValid);
   
       if(!isPasswordValid){
         return res 
@@ -78,6 +79,16 @@ const login = async(req,res)=>{
           message: "The password you have entered is not correct"
         })
       }
+      else{
+        res
+        .status(200)
+        .json({
+             message: "Login successfull", 
+             token: await userExists.generateToken(),
+             userId: userExists._id.toString(),
+            
+            });
+      // }
       //    const hashPassword= userExists.sharePasswords();
       //    console.log(hashPassword)
       //    const passwordHash = await bcrypt.hash(password,10);
@@ -89,7 +100,9 @@ const login = async(req,res)=>{
       //     console.log("password doesnot match")
       //    }
   
-  } catch (error) {
+  } 
+}catch (error) {
+  console.log(error)
     res
     .status(500)
     .json({

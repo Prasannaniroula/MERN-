@@ -1,7 +1,7 @@
-import {router} from "express";
-import { contactForm } from "../controllers/contact.controller";
+import Router from "express";
+import { contactForm } from "../controllers/contact.controller.js";
 
+const contactRouter = Router();
+contactRouter.route("/contact").post(contactForm)
 
-router.route("/contact",contactForm)
-
-export  {router};
+export  {contactRouter};

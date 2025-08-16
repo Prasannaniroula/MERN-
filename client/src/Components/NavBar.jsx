@@ -4,7 +4,6 @@ import { Link, NavLink } from 'react-router-dom'
 function NavBar() {
   return (
     
-        <body className='m-0 p-0'>
     <div className='bg-black flex justify-around w-screen text-white p-4 '>
         <div className="flex">
             <Link to="/"><h1 className='font-bold text-xl'>Logo</h1></Link>
@@ -18,7 +17,6 @@ function NavBar() {
          <NavLink className={({isActive})=>`w-20 hover:border-b-4 border-pink-600 text-center hover:text-pink-300 ${isActive ? "text-pink-300 border-b-4 border-pink-600 ":""}`} to="/register">Register</NavLink>
         </div>
     </div>
-    </body>
 
   )
 }

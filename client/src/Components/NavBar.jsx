@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 function NavBar() {
   return (
@@ -10,12 +10,12 @@ function NavBar() {
             <Link to="/"><h1 className='font-bold text-3xl'>Logo</h1></Link>
         </div>
         <div className='flex gap-8 center text-lg pr-10'>
-         <Link className='w-20 hover:border-b-4 border-pink-600 text-center text-pink-200'  to="/">Home</Link>
-         <Link className='w-20 hover:border-b-4 border-pink-600 text-center  text-pink-200' to="/contact">Contact</Link>
-         <Link className='w-20 hover:border-b-4 border-pink-600 text-center  text-pink-200' to="/about">About</Link>
-         <Link className='w-20 hover:border-b-4 border-pink-600 text-center  text-pink-200' to="/service">Service</Link>
-         <Link className='w-20 hover:border-b-4 border-pink-600 text-center  text-pink-200' to="/register">Register</Link>
-         <Link className='w-20 hover:border-b-4 border-pink-600 text-center  text-pink-200' to="/login">Login</Link>
+         <NavLink className={({isActive})=>`w-20 hover:border-b-4 border-pink-600 text-center hover:text-pink-300 ${isActive ? "text-pink-300 border-b-4 border-pink-600 ":""}`} to="/">Home</NavLink>
+         <NavLink className={({isActive})=>`w-20 hover:border-b-4 border-pink-600 text-center hover:text-pink-300 ${isActive ? "text-pink-300 border-b-4 border-pink-600 ":""}`} to="/contact">Contact</NavLink>
+         <NavLink className={({isActive})=>`w-20 hover:border-b-4 border-pink-600 text-center hover:text-pink-300 ${isActive ? "text-pink-300 border-b-4 border-pink-600 ":""}`} to="/about">About</NavLink>
+         <NavLink className={({isActive})=>`w-20 hover:border-b-4 border-pink-600 text-center hover:text-pink-300 ${isActive ? "text-pink-300 border-b-4 border-pink-600 ":""}`} to="/service">Service</NavLink>
+         <NavLink className={({isActive})=>`w-20 hover:border-b-4 border-pink-600 text-center hover:text-pink-300 ${isActive ? "text-pink-300 border-b-4 border-pink-600 ":""}`} to="/login">Login</NavLink>
+         <NavLink className={({isActive})=>`w-20 hover:border-b-4 border-pink-600 text-center hover:text-pink-300 ${isActive ? "text-pink-300 border-b-4 border-pink-600 ":""}`} to="/register">Register</NavLink>
         </div>
     </div>
     </body>

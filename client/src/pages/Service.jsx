@@ -2,7 +2,11 @@ import React from 'react'
 
 function Service() {
   return (
-    <div>Service</div>
+    <>
+            <div className="bg-black w-screen h-screen">
+          
+          </div>
+    </>
   )
 }
 

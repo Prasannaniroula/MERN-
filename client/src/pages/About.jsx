@@ -2,9 +2,11 @@ import React from 'react'
 
 function About() {
   return (
-    <>
-    This is about page
-    </>
+   <>
+           <div className="bg-black w-screen h-screen">
+          
+          </div>
+   </>
   )
 }
 

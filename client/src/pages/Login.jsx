@@ -2,7 +2,11 @@ import React from 'react'
 
 function Login() {
   return (
-    <div>Login</div>
+    <>
+            <div className="bg-black w-screen h-screen">
+          
+          </div>
+    </>
   )
 }
 

@@ -6,7 +6,6 @@ import Service from "./pages/Service";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import NavBar from "./Components/NavBar";
-import './index.css'
 
 const App = ()=>{
   return( <>

@@ -6,7 +6,7 @@ function NavBar() {
     
     <div className='bg-black flex justify-around w-screen text-white p-4 '>
         <div className="flex">
-            <Link to="/"><h1 className='font-bold text-xl'>Logo</h1></Link>
+            <Link to="/"><h1 className='font-bold text-xl'>Portfolio</h1></Link>
         </div>
         <div className='flex gap-2 center text-sm pr-10'>
          <NavLink className={({isActive})=>`w-20 hover:border-b-4 border-pink-600 text-center hover:text-pink-300 ${isActive ? "text-pink-300 border-b-4 border-pink-600 ":""}`} to="/">Home</NavLink>

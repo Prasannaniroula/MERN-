@@ -51,7 +51,7 @@ function Contact() {
                 </label>
                 <input
                   className="border border-white p-2 rounded-xl w-full bg-black focus:outline-none focus:ring-2 focus:ring-pink-500"
-                  type="email"
+                  type="username"
                   placeholder="Enter your username here"
                   name="username"
                   id="username"

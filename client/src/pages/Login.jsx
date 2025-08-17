@@ -1,50 +1,56 @@
 import React, { useState } from "react";
 
 function Login() {
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
 
-   const [ user, setuser] = useState({
-    email:"",
-    password:"",
-   });
+  const handleInput = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
 
-   const handleInput = (e)=>{
-      let name = e.target.name;
-      let value = e.target.value;
+    setUser({
+      ...user,
+      [name]: value,
+    });
+  };
 
-      setuser({
-        ... user,
-
-        [name]: value,
-      })
-   }
-
-   const handleSubmitForm = (e)=>{
-     e.preventDefault();
-     console.log(user)
-   }
-
+  const handleSubmitForm = (e) => {
+    e.preventDefault();
+    console.log(user);
+  };
 
   return (
     <>
-      <div className="bg-black w-screen h-screen text-white">
-        <div className="flex justify-evenly pt-20 pl-0">
-          <div className="registration-image ">
+      <div className="bg-black w-screen min-h-screen text-white px-4 py-10">
+        <div className="flex flex-col lg:flex-row items-center justify-evenly gap-10">
+          
+          {/* Left Image */}
+          <div className="w-full lg:w-1/2 flex justify-center">
             <img
-              className="rounded-full"
+              className="rounded-full max-w-full h-auto"
               src="/registration.png"
               alt="Registration"
-              width="700"
-              height="900"
             />
           </div>
-          <div className="form">
-            <h1 className="text-5xl">Login form</h1>
-            <form onSubmit={handleSubmitForm} className=" w-96 pt-10 flex flex-col text-center gap-6">
-              <div>
-                <label htmlFor="email">E-mail:</label>
+
+          {/* Right Form */}
+          <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center lg:text-left">
+              Login Form
+            </h1>
+            <form
+              onSubmit={handleSubmitForm}
+              className="w-full max-w-md pt-8 flex flex-col gap-6"
+            >
+              <div className="flex flex-col gap-2">
+                <label htmlFor="email" className="text-left">
+                  E-mail:
+                </label>
                 <input
-                 className="border-1 border-white p-2 rounded-xl w-96"
-                  type="text"
+                  className="border border-white p-2 rounded-xl w-full bg-black focus:outline-none focus:ring-2 focus:ring-pink-500"
+                  type="email"
                   placeholder="Enter your E-mail"
                   name="email"
                   id="email"
@@ -54,10 +60,13 @@ function Login() {
                   onChange={handleInput}
                 />
               </div>
-              <div>
-                <label htmlFor="password">Password:</label>
+
+              <div className="flex flex-col gap-2">
+                <label htmlFor="password" className="text-left">
+                  Password:
+                </label>
                 <input
-                 className="border-1 border-white p-2 rounded-xl w-96"
+                  className="border border-white p-2 rounded-xl w-full bg-black focus:outline-none focus:ring-2 focus:ring-pink-500"
                   type="password"
                   placeholder="Enter your Password"
                   name="password"
@@ -66,10 +75,13 @@ function Login() {
                   autoComplete="off"
                   value={user.password}
                   onChange={handleInput}
-                /><br/>
-                <div className="flex justify-center">
-             <button className="bg-pink-600 mt-5 px-6 py-2 rounded-2xl">Login</button>
-             </div>
+                />
+              </div>
+
+              <div className="flex justify-center lg:justify-start">
+                <button className="bg-pink-600 hover:bg-pink-700 transition mt-5 px-6 py-2 rounded-2xl">
+                  Login
+                </button>
               </div>
             </form>
           </div>

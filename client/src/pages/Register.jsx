@@ -20,6 +20,14 @@ function Register() {
   const handleSubmitForm = (e) => {
     e.preventDefault();
     console.log(user);
+
+    const response = fetch('http://localhost:8000/register',{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+      },
+      body:JSON.stringify(user),
+    })
   };
 
   return (

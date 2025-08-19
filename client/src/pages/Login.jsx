@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import {useNavigate} from "react-router-dom";
 
 function Login() {
+  const navigate= useNavigate();
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -16,9 +18,29 @@ function Login() {
     });
   };
 
-  const handleSubmitForm = (e) => {
+  const handleSubmitForm = async (e) => {
     e.preventDefault();
     console.log(user);
+
+    try {
+      const response = await fetch('http://localhost:8000/login',{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body: JSON.stringify(user)
+      })
+      console.log("Successfully logged in",response)
+
+      if(response.ok){
+        setUser({email:"",password:"" });
+        navigate('/');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+
   };
 
   return (

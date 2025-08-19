@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../store/auth";
 
 function Login() {
-  const navigate= useNavigate();
+  const { storetokenInLS } = useAuth();
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -23,31 +25,33 @@ function Login() {
     console.log(user);
 
     try {
-      const response = await fetch('http://localhost:8000/login',{
-        method:"POST",
-        headers:{
-          "Content-Type":"application/json"
+      const response = await fetch("http://localhost:8000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(user)
-      })
-      console.log("Successfully logged in",response)
+        body: JSON.stringify(user),
+      });
+      console.log("Successfully logged in", response);
+      const res_data = await response.json();
 
-      if(response.ok){
-        setUser({email:"",password:"" });
-        navigate('/');
+
+
+      if (response.ok) {
+     
+        storetokenInLS(res_data.token);
+        setUser({ email: "", password: "" });
+        navigate("/");
       }
     } catch (error) {
       console.log(error);
     }
-
-
   };
 
   return (
     <>
       <div className="bg-black w-screen min-h-screen text-white px-4 py-10">
         <div className="flex flex-col lg:flex-row items-center justify-evenly gap-10">
-          
           {/* Left Image */}
           <div className="w-full lg:w-1/2 flex justify-center">
             <img

@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import {useNavigate} from "react-router-dom";
+
 
 function Register() {
+  const navigate = useNavigate();
+  
   const [user, setUser] = useState({
     username: "",
     email: "",
@@ -17,17 +21,29 @@ function Register() {
     });
   };
 
-  const handleSubmitForm = (e) => {
+  const handleSubmitForm = async (e) => {
     e.preventDefault();
-    console.log(user);
+    // console.log(user);
 
-    const response = fetch('http://localhost:8000/register',{
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json",
-      },
-      body:JSON.stringify(user),
-    })
+    try {
+      const response = await fetch('http://localhost:8000/register',{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json",
+        },
+        body:JSON.stringify(user),
+      })
+console.log(response)
+if(response.ok){
+  setUser({username:"", email:"", password:""});
+  navigate("/login");
+}
+
+  console.log("User registered successfully");
+
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

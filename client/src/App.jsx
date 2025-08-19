@@ -7,6 +7,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import NavBar from "./Components/NavBar";
 import { Error } from "./pages/404Errorpage";
+import { Logout } from "./pages/Logout";
 
 const App = ()=>{
   return( <>
@@ -18,6 +19,7 @@ const App = ()=>{
       <Route path="/service" element={<><NavBar/><Service/></>} />
       <Route path="/register" element={<><NavBar/><Register/></>} />
       <Route path="/login" element={<><NavBar/><Login/></>} />
+      <Route path="/logout" element={<><NavBar/><Logout/></>} />
       <Route path="*" element={<Error/>}/>
      </Routes>
    </BrowserRouter>

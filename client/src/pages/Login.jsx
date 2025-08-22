@@ -32,7 +32,7 @@ function Login() {
         },
         body: JSON.stringify(user),
       });
-      console.log("Successfully logged in", response);
+      console.log("response", response);
       const res_data = await response.json();
 
 

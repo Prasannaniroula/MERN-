@@ -5,6 +5,8 @@ import { useAuth } from '../../store/auth'
 function NavBar() {
 
   const isLoggedIn = useAuth();
+  console.log(isLoggedIn.isLoggedIn);
+ 
 
   return (
     
@@ -18,7 +20,7 @@ function NavBar() {
          <NavLink className={({isActive})=>`w-20 hover:border-b-4 border-pink-600 text-center hover:text-pink-300 ${isActive ? "text-pink-300 border-b-4 border-pink-600 ":""}`} to="/about">About</NavLink>
          <NavLink className={({isActive})=>`w-20 hover:border-b-4 border-pink-600 text-center hover:text-pink-300 ${isActive ? "text-pink-300 border-b-4 border-pink-600 ":""}`} to="/service">Service</NavLink>
 
-         {isLoggedIn ? <NavLink className={({isActive})=>`w-20 hover:border-b-4 border-pink-600 text-center hover:text-pink-300 ${isActive ? "text-pink-300 border-b-4 border-pink-600 ":""}`} to="/logout">Logout</NavLink> : <>
+         {isLoggedIn.isLoggedIn ? <NavLink className={({isActive})=>`w-20 hover:border-b-4 border-pink-600 text-center hover:text-pink-300 ${isActive ? "text-pink-300 border-b-4 border-pink-600 ":""}`} to="/logout">Logout</NavLink> : <>
          <NavLink className={({isActive})=>`w-20 hover:border-b-4 border-pink-600 text-center hover:text-pink-300 ${isActive ? "text-pink-300 border-b-4 border-pink-600 ":""}`} to="/login">Login</NavLink>
          <NavLink className={({isActive})=>`w-20 hover:border-b-4 border-pink-600 text-center hover:text-pink-300 ${isActive ? "text-pink-300 border-b-4 border-pink-600 ":""}`} to="/register">Register</NavLink>
          </> }

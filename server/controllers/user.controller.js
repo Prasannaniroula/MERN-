@@ -114,4 +114,24 @@ const login = async(req,res)=>{
 
 }
 
-export default {home,register,login};
+
+const user = async (req,res)=>{
+  try {
+    const userData = req.user;
+    console.log(userData);
+    return res
+    .status(200)
+    .json({
+      message:userData
+    });
+
+    
+  } catch (error) {
+
+    console.log("Error occured",error)
+    
+  }
+
+}
+
+export default {home,register,login, user};

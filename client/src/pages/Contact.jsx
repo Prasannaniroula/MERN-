@@ -1,25 +1,40 @@
 import React, { useState } from "react";
+import { useAuth } from "../store/auth.jsx";
 
 function Contact() {
-  const [user, setUser] = useState({
+  const [contact, setContact] = useState({
     username:"",
     email: "",
     message: "",
   });
+ const [userData, setUserData] = useState(true)
+ console.log(userData);
+
+  const {user} = useAuth();
+  console.log(user)
+
+  if(userData && user){
+    setContact({
+      username:user.username,
+      email:user.email,
+      message:""
+    })
+  }
+
 
   const handleInput = (e) => {
     let name = e.target.name;
     let value = e.target.value;
 
     setUser({
-      ...user,
+      ...contact,
       [name]: value,
     });
   };
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
-    console.log(user);
+    console.log(contact);
   };
 
   return (

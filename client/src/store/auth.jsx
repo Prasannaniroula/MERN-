@@ -30,7 +30,8 @@ export const AuthProvider = ({ children }) => {
 
     if(response.ok){
        const data = await response.json();
-       setUser(data);
+       console.log(data.userData)
+       setUser(data.userData);
     }
 
         
@@ -46,7 +47,7 @@ export const AuthProvider = ({ children }) => {
   },[])
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, storetokenInLS, LogoutUser }}>
+    <AuthContext.Provider value={{ isLoggedIn, storetokenInLS, LogoutUser, user }}>
       {children}
     </AuthContext.Provider>
   );

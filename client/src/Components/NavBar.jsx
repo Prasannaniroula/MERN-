@@ -5,7 +5,6 @@ import { useAuth } from '../store/auth'
 function NavBar() {
 
   const isLoggedIn = useAuth();
-  console.log(isLoggedIn.isLoggedIn);
  
 
   return (

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "../store/auth.jsx";
 
 function Contact() {
@@ -8,17 +8,23 @@ function Contact() {
     message: "",
   });
  const [userData, setUserData] = useState(true)
- console.log(userData);
 
   const {user} = useAuth();
-  console.log(user)
+  // useEffect(()=>{
+  //   if(user){
+  //     console.log(user.userData);
+  //   }
+
+  // },[user])
+
 
   if(userData && user){
     setContact({
-      username:user.username,
-      email:user.email,
-      message:""
+      username:user.username || "",
+      email:user.email || "",
+      message:"",
     })
+    setUserData(false)
   }
 
 
@@ -72,7 +78,7 @@ function Contact() {
                   id="username"
                   required
                   autoComplete="off"
-                  value={user.username}
+                  value={user.username || ""}
                   onChange={handleInput}
                 />
               </div>
@@ -88,7 +94,7 @@ function Contact() {
                   id="email"
                   required
                   autoComplete="off"
-                  value={user.email}
+                  value={user.email|| ""}
                   onChange={handleInput}
                 />
               </div>

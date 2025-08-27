@@ -32,7 +32,7 @@ function Contact() {
     let name = e.target.name;
     let value = e.target.value;
 
-    setUser({
+    setContact({
       ...contact,
       [name]: value,
     });

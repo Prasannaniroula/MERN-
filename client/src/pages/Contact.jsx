@@ -7,8 +7,6 @@ function Contact() {
     email: "",
     message: "",
   });
- const [userData, setUserData] = useState(true)
-
   const {user} = useAuth();
   // useEffect(()=>{
   //   if(user){
@@ -17,15 +15,25 @@ function Contact() {
 
   // },[user])
 
-
-  if(userData && user){
+useEffect(()=>{
+  if(user){
+    //if user is logged in
     setContact({
       username:user.username || "",
       email:user.email || "",
       message:"",
     })
-    setUserData(false)
   }
+  else{
+    setContact({
+      username:"",
+      email:"",
+      message:"",
+    })
+  }
+
+},[user])
+  
 
 
   const handleInput = (e) => {
@@ -78,7 +86,7 @@ function Contact() {
                   id="username"
                   required
                   autoComplete="off"
-                  value={user.username || ""}
+                  value={contact?.username || ""}
                   onChange={handleInput}
                 />
               </div>
@@ -94,7 +102,7 @@ function Contact() {
                   id="email"
                   required
                   autoComplete="off"
-                  value={user.email|| ""}
+                  value={contact?.email|| ""}
                   onChange={handleInput}
                 />
               </div>
@@ -111,7 +119,7 @@ function Contact() {
                   id="message"
                   required
                   autoComplete="off"
-                  value={user.message}
+                  value={contact.message}
                   onChange={handleInput}
                 />
               </div>

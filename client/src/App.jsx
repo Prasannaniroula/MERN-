@@ -6,12 +6,14 @@ import Service from "./pages/Service";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import NavBar from "./Components/NavBar";
+import ScrollToTop from "./pages/ScrollToTop";
 import { Error } from "./pages/404Errorpage";
 import { Logout } from "./pages/Logout";
 
 const App = ()=>{
   return( <>
    <BrowserRouter>
+   <ScrollToTop/>
      <Routes>
       <Route path="/" element={<><NavBar/><Home/></>} />
       <Route path="/about" element={<><NavBar/><About/></>} />
